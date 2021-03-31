@@ -1,0 +1,89 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+body {
+  margin: 0;
+  background: #dedede;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  background-image: url(./imgs/background.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.gameboard {
+  height: 100vh;
+  width: 100vh;
+  border-radius: 50%;
+  box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.16);
+  overflow: hidden;
+  margin: 0 auto;
+  max-height: 60vh;
+  max-width: 60vh;
+}
+
+.color {
+  width: 50%;
+  height: 50%;
+  display: inline-block;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: left;
+}
+
+.lightBlue {
+  background: #22a6b3;
+}
+
+.lightBlue.light {
+  background: #7ed6df;
+}
+
+.red {
+  background: #be2edd;
+}
+
+.red.light {
+  background: #e056fd;
+}
+
+.orange {
+  background: #f0932b;
+}
+
+.orange.light {
+  background: #ffbe76;
+}
+
+.green {
+  background: #6ab04c;
+}
+
+.green.light {
+  background: #badc58;
+}
+
+.btn-start {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  box-shadow: 5px 5px 5px black;
+  background-image: url(./imgs/btn-on.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: calc(50% - 50px);
+  left: calc(50% - 50px);
+}
+
+.hide {
+  display: none;
+}

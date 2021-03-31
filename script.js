@@ -1,5 +1,5 @@
 const lightBlue = document.getElementById('lightBlue')
-const violet = document.getElementById('violet')
+const red = document.getElementById('red')
 const orange = document.getElementById('orange')
 const green = document.getElementById('green')
 const btnEmpezar = document.getElementById('btnEmpezar')
@@ -20,7 +20,7 @@ class Game {
         this.level = 1
         this.colors = {
             lightBlue,
-            violet,
+            red,
             orange,
             green
         }
@@ -41,7 +41,7 @@ class Game {
             case 0:
                 return 'lightBlue';
             case 1:
-                return 'violet';
+                return 'red';
             case 2:
                 return 'orange';
             case 3:
@@ -53,7 +53,7 @@ class Game {
         switch (color) {
             case 'lightBlue':
                 return 0
-            case 'violet':
+            case 'red':
                 return 1
             case 'orange':
                 return 2
@@ -85,14 +85,14 @@ class Game {
 
     addClickEvents() {
         this.colors.lightBlue.addEventListener('click', this.chooseColor)
-        this.colors.violet.addEventListener('click', this.chooseColor)
+        this.colors.red.addEventListener('click', this.chooseColor)
         this.colors.orange.addEventListener('click', this.chooseColor)
         this.colors.green.addEventListener('click', this.chooseColor)
     }
 
     removeClickEvents() {
         this.colors.lightBlue.removeEventListener('click', this.chooseColor)
-        this.colors.violet.removeEventListener('click', this.chooseColor)
+        this.colors.red.removeEventListener('click', this.chooseColor)
         this.colors.orange.removeEventListener('click', this.chooseColor)
         this.colors.green.removeEventListener('click', this.chooseColor)
     }
