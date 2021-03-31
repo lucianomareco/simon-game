@@ -7,6 +7,7 @@ const LAST_LEVEL = 10
 
 class Game {
     constructor() {
+        this.initialize = this.initialize.bind(this)
         this.initialize()
         this.generateSequence()
         setTimeout(this.nextLevel, 500)
@@ -15,7 +16,7 @@ class Game {
     initialize() {
         this.nextLevel = this.nextLevel.bind(this)
         this.chooseColor = this.chooseColor.bind(this)
-        btnStart.classList.add('hide')
+        this.toggleBtnStart()
         this.level = 1
         this.colors = {
             lightBlue,
@@ -25,6 +26,12 @@ class Game {
         }
     }
 
+    toggleBtnStart() {
+        if (btnStart.classList.contains('hide')) {
+            btnStart.classList.remove('hide')
+        }
+        else btnStart.classList.add('hide')
+    }
     generateSequence() {
         this.sequence = new Array(LAST_LEVEL).fill(0).map(n => Math.floor(Math.random() * 4))
     }
@@ -68,7 +75,6 @@ class Game {
     }
 
     illuminateColor(color) {
-        debugger
         this.colors[color].classList.add('light')
         setTimeout(() => this.toTurnOff(color), 350)
     }
@@ -101,16 +107,31 @@ class Game {
             if (this.subLevel === this.level) {
                 this.level++
                 this.removeClickEvents()
-                if (this.level === (LAST_LEVEL + 1)) { }
-                //gano
+                if (this.level === (LAST_LEVEL + 1)) {
+                    this.wonTheGame()
+                }
                 else {
                     setTimeout(this.nextLevel, 1500)
                 }
             }
         } else {
-            //perdio
+            this.lostTheGame()
         }
     }
+
+    wonTheGame() {
+        swal('CONGRATULATIONS!', 'YOU WON', 'success')
+            .then(this.initialize())
+    }
+
+    lostTheGame() {
+        swal('SORRY :(', 'YOU LOST', 'error')
+            .then(() => {
+                this.removeClickEvents()
+                this.initialize()
+            })
+    }
+
 }
 
 function startGame() {
