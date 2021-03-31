@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Simon Dice</title>
     <style>
       body {
@@ -86,45 +86,18 @@
   </head>
   <body>
     <div class="gameboard">
-      <div id="lightBlue" class="color lightBlue left" data-color="lightBlue"></div>
+      <div
+        id="lightBlue"
+        class="color lightBlue left"
+        data-color="lightBlue"
+      ></div>
       <div id="violet" class="color violet right" data-color="violet"></div>
       <div id="orange" class="color orange left" data-color="orange"></div>
       <div id="green" class="color green right" data-color="green"></div>
-      <button id="btnStart" class="btn-start" onclick="startGame()">Empezar a jugar!</button>
+      <button id="btnStart" class="btn-start" onclick="startGame()">
+        Empezar a jugar!
+      </button>
     </div>
-    <script>
-        
-        const lightBlue = document.getElementById('lightBlue')
-        const violet = document.getElementById('violet')
-        const orange = document.getElementById('orange')
-        const green = document.getElementById('green')
-        const btnEmpezar = document.getElementById('btnEmpezar')
-
-        class Game{
-            constructor(){
-                this.initialize()
-                this.generateSequence()
-            }
-            initialize(){
-                btnStart.classList.add('hide')
-                this.level = 1
-                this.colors = {
-                  lightBlue,
-                  violet,
-                  orange,
-                  green                  
-                }
-                
-            }
-
-            generateSequence(){
-                this.sequence = new Array(10).fill(0).map(n => Math.floor(Math.random() * 4))
-            }
-        }
-
-        function startGame(){
-            window.game = new Game()
-        }
-     </script>
   </body>
+  <script src="script.js"></script>
 </html>
