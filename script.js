@@ -11,13 +11,13 @@ class Game {
     constructor() {
         this.setMaxScore()
         this.initialize = this.initialize.bind(this)
-        this.initialize()
-        this.generateSequence()
-        setTimeout(this.nextLevel, 500)
+
     }
 
     initialize() {
         this.nextLevel = this.nextLevel.bind(this)
+        this.generateSequence()
+        setTimeout(this.nextLevel, 500)
         this.chooseColor = this.chooseColor.bind(this)
         this.toggleBtnStart()
         this.level = 1
@@ -166,5 +166,11 @@ class Game {
 }
 
 function startGame() {
+    window.game.initialize();
+}
+
+function setWindow() {
     window.game = new Game()
 }
+
+setWindow();
