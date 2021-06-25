@@ -1,12 +1,15 @@
-const lightBlue = document.getElementById('lightBlue')
-const red = document.getElementById('red')
-const orange = document.getElementById('orange')
-const green = document.getElementById('green')
-const btnEmpezar = document.getElementById('btnEmpezar')
+const lightBlue = document.getElementById('lightBlue');
+const red = document.getElementById('red');
+const orange = document.getElementById('orange');
+const green = document.getElementById('green');
+const btnEmpezar = document.getElementById('btnEmpezar');
+const currentScore = document.getElementById('currentScore');
+const bestScore = document.getElementById('bestScore');
 const LAST_LEVEL = 10
 
 class Game {
     constructor() {
+        this.setMaxScore()
         this.initialize = this.initialize.bind(this)
         this.initialize()
         this.generateSequence()
@@ -24,6 +27,14 @@ class Game {
             orange,
             green
         }
+        this.setScore();
+    }
+
+    setScore() {
+        currentScore.innerHTML = '';
+        currentScore.innerHTML = `
+        <h2>Score: ${this.level - 1}</h2>
+        `
     }
 
     toggleBtnStart() {
@@ -61,6 +72,7 @@ class Game {
                 return 3
         }
     }
+
     illuminateSequence() {
         for (let i = 0; i < this.level; i++) {
             const color = this.transformNumberToColor(this.sequence[i])
@@ -72,6 +84,24 @@ class Game {
         this.subLevel = 0
         this.illuminateSequence()
         this.addClickEvents()
+        this.setScore()
+    }
+
+    saveScore() {
+        let maxScore = localStorage.getItem('maxScore');
+        if (maxScore === null) {
+            localStorage.setItem('maxScore', JSON.stringify(this.level - 1));
+            this.setMaxScore();
+        } else if ((this.level - 1) > maxScore) {
+            localStorage.setItem('maxScore', JSON.stringify(this.level - 1));
+            this.setMaxScore()
+        }
+    }
+
+    setMaxScore() {
+        bestScore.innerHTML = `
+        <h2>Best score: ${JSON.parse(localStorage.getItem('maxScore'))}</h2>
+        `
     }
 
     illuminateColor(color) {
@@ -128,6 +158,7 @@ class Game {
         swal('SORRY :(', 'YOU LOST', 'error')
             .then(() => {
                 this.removeClickEvents()
+                this.saveScore()
                 this.initialize()
             })
     }

@@ -6,12 +6,22 @@
     <link rel="stylesheet" href="./style.css">
   </head>
   <body>
-    <div class="gameboard">
-      <div id="lightBlue" class="color lightBlue left" data-color="lightBlue"></div>
-      <div id="red" class="color red right" data-color="red"></div>
-      <div id="orange" class="color orange left" data-color="orange"></div>
-      <div id="green" class="color green right" data-color="green"></div>
-      <button id="btnStart" class="btn-start" onclick="startGame()"></button>
+    <div class="score">
+      <div id="currentScore">
+        <h2>Score: 0</h2>
+      </div>
+      <div id="bestScore">
+        <h2>Best score: 0</h2>
+      </div>
+    </div>
+    <div class="gameboard-container">
+      <div class="gameboard">
+        <div id="lightBlue" class="color lightBlue left" data-color="lightBlue"></div>
+        <div id="red" class="color red right" data-color="red"></div>
+        <div id="orange" class="color orange left" data-color="orange"></div>
+        <div id="green" class="color green right" data-color="green"></div>
+        <button id="btnStart" class="btn-start" onclick="startGame()"></button>
+      </div>
     </div>
   </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
