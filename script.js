@@ -11,10 +11,16 @@ class Game {
     constructor() {
         this.setMaxScore()
         this.initialize = this.initialize.bind(this)
-
     }
 
     initialize() {
+        this.toggleBtnStart()
+        this.startGame = this.startGame.bind(this)
+        this.setMaxScore()
+    }
+
+    startGame() {
+        console.log(this)
         this.nextLevel = this.nextLevel.bind(this)
         this.generateSequence()
         setTimeout(this.nextLevel, 500)
@@ -152,7 +158,10 @@ class Game {
 
     wonTheGame() {
         swal('CONGRATULATIONS!', 'YOU WON', 'success')
-            .then(this.initialize())
+            .then(() => {
+                this.saveScore()
+                this.initialize()
+            })
     }
 
     lostTheGame() {
@@ -167,7 +176,7 @@ class Game {
 }
 
 function startGame() {
-    window.game.initialize();
+    window.game.startGame();
 }
 
 function setWindow() {
