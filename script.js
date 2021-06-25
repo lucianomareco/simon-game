@@ -89,16 +89,17 @@ class Game {
 
     saveScore() {
         let maxScore = localStorage.getItem('maxScore');
-        if (maxScore === null) {
-            localStorage.setItem('maxScore', JSON.stringify(this.level - 1));
-            this.setMaxScore();
-        } else if ((this.level - 1) > maxScore) {
+        if ((this.level - 1) > maxScore) {
             localStorage.setItem('maxScore', JSON.stringify(this.level - 1));
             this.setMaxScore()
         }
     }
 
     setMaxScore() {
+        let maxScore = localStorage.getItem('maxScore');
+        if (maxScore === null) {
+            localStorage.setItem('maxScore', JSON.stringify(0));
+        }
         bestScore.innerHTML = `
         <h2>Best score: ${JSON.parse(localStorage.getItem('maxScore'))}</h2>
         `
